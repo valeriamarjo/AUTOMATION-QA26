@@ -1,0 +1,53 @@
+def sumar (num1,num2):
+    return num1+num2
+
+def restar (num1,num2):
+    return num1-num2
+
+def multiplicar (num1,num2):
+    return num1*num2
+
+def dividir (num1,num2):
+    if num2 == 0:
+        raise ZeroDivisionError ("Nunca se pudo dividirse por cero, ahora no va a ser la excepción")
+    return num1/num2
+
+def mostrar_menu():
+    print("1: Sumar")
+    print("2: Restar")
+    print("3: Multiplicar")
+    print("4: Dividir")
+    print("5: Salir")
+
+while True:
+    mostrar_menu()
+    
+    try:
+        opcion= input("Elegí que hacer: ")
+        if opcion == 5 or opcion == "5":
+            print("Eligiste salir: ¡Chau! Cerrando")
+            break
+        
+        num1 = float(input("Ingresá el primer número: "))
+        num2 = float(input("Ingresá el segundo número: "))
+        
+        match opcion:
+            case "1":
+                resultado = sumar(num1,num2)
+            case "2":
+                resultado = restar(num1,num2)
+            case "3":
+                resultado = multiplicar(num1,num2)
+            case "4":
+                resultado = dividir(num1, num2) 
+            case _:
+                raise ValueError ("elegiste mal, probá de nuevo")
+            
+        print(f"el resultado es: {resultado:g}")
+        
+    except ValueError as e:
+        print (f"Error: {e}")
+        
+    except ZeroDivisionError as e:
+        print(f"Error:{e}")
+
